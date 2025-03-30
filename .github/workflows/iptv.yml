@@ -1,8 +1,8 @@
-name: IPTV Hong Kong Channel Extractor
+name: IPTV Jade & Phoenix Info Extractor
 
 on:
   schedule:
-    - cron: "0 8 * * *"  # 每 6 小时运行一次
+    - cron: "0 */6 * * *"  # 每 6 小时运行一次
   workflow_dispatch:  # 允许手动触发
 
 jobs:
@@ -16,14 +16,15 @@ jobs:
       - name: 安装 Curl
         run: sudo apt update && sudo apt install -y curl
 
-      - name: 运行 IPTV 香港频道提取脚本
+      - name: 运行 IPTV 频道提取脚本
         run: bash iptv.sh
 
-      - name: 提交香港 IPTV 播放列表
+      - name: 确保 M3U 文件有变动后提交
         run: |
           git fetch origin
           git checkout -B gh-pages
-          cp tv_hongkong.m3u .
-          git add tv_hongkong.m3u
-          git commit -m "更新香港频道列表 $(date '+%Y-%m-%d %H:%M:%S')"
+          mv tv_selected.m3u tv_selected_new.m3u  # 先改名，避免 cp 复制错误
+          mv tv_selected_new.m3u tv_selected.m3u  # 再改回原名
+          git add tv_selected.m3u
+          git diff --staged --quiet || git commit -m "更新翡翠台 & 凤凰资讯频道 $(date '+%Y-%m-%d %H:%M:%S')"
           git push origin gh-pages
