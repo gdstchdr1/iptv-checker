@@ -19,6 +19,11 @@ jobs:
       - name: 运行 IPTV 频道提取脚本
         run: bash iptv.sh
 
+      - name: 配置 Git 用户信息
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+
       - name: 确保 M3U 文件有变动后提交
         run: |
           git fetch origin
