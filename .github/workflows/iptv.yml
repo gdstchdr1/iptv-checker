@@ -2,7 +2,7 @@ name: IPTV Jade & Phoenix Info Extractor
 
 on:
   schedule:
-    - cron: "0 */6 * * *"  # 每 6 小时运行一次
+    - cron: "0 8 * * *"  # 每 6 小时运行一次
   workflow_dispatch:  # 允许手动触发
 
 jobs:
@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: 拉取仓库代码
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 确保可以获取完整的 Git 历史
 
       - name: 安装 Curl
         run: sudo apt update && sudo apt install -y curl
@@ -24,12 +26,18 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
 
-      - name: 确保 M3U 文件有变动后提交
+      - name: 认证 GitHub Token 并推送代码
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
           git fetch origin
           git checkout -B gh-pages
+          git pull --rebase origin gh-pages  # 🔥 关键：拉取远程最新代码并合并
+          
           mv tv_selected.m3u tv_selected_new.m3u  # 先改名，避免 cp 复制错误
           mv tv_selected_new.m3u tv_selected.m3u  # 再改回原名
+          
           git add tv_selected.m3u
           git diff --staged --quiet || git commit -m "更新翡翠台 & 凤凰资讯频道 $(date '+%Y-%m-%d %H:%M:%S')"
-          git push origin gh-pages
+          git push origin gh-pages  # ✅ 确保 push 不会因为 "non-fast-forward" 失败
