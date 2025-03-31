@@ -2,7 +2,7 @@ name: IPTV Jade & Phoenix Info Extractor
 
 on:
   schedule:
-    - cron: "0 */6 * * *"  # 每 6 小时运行一次
+    - cron: "10 0 * * *"  # 每天8时10分运行一次
   workflow_dispatch:
 
 jobs:
