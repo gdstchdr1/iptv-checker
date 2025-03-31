@@ -2,8 +2,8 @@ name: IPTV Jade & Phoenix Info Extractor
 
 on:
   schedule:
-    - cron: "0 8 * * *"  # 每 6 小时运行一次
-  workflow_dispatch:  # 允许手动触发
+    - cron: "0 */6 * * *"  # 每 6 小时运行一次
+  workflow_dispatch:
 
 jobs:
   check-iptv:
@@ -13,13 +13,20 @@ jobs:
       - name: 拉取仓库代码
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 确保可以获取完整的 Git 历史
+          fetch-depth: 0  # 拉取完整历史，避免 git pull 失败
 
-      - name: 安装 Curl
-        run: sudo apt update && sudo apt install -y curl
+      - name: 删除旧的 IPTV 直播源文件
+        run: rm -f tv_selected.m3u  # 🔥 关键步骤，删除冲突文件
+
+      - name: 清理工作区，确保无冲突文件
+        run: |
+          git reset --hard
+          git clean -fd
+          git fetch origin
+          git checkout -B gh-pages
 
       - name: 运行 IPTV 频道提取脚本
-        run: bash iptv.sh
+        run: bash iptv.sh  # 生成新的 tv_selected.m3u
 
       - name: 配置 Git 用户信息
         run: |
@@ -30,14 +37,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
-          git fetch origin
-          git checkout -B gh-pages
-          git pull --rebase origin gh-pages  # 🔥 关键：拉取远程最新代码并合并
-          
-          mv tv_selected.m3u tv_selected_new.m3u  # 先改名，避免 cp 复制错误
-          mv tv_selected_new.m3u tv_selected.m3u  # 再改回原名
-          
           git add tv_selected.m3u
-          git diff --staged --quiet || git commit -m "更新翡翠台 & 凤凰资讯频道 $(date '+%Y-%m-%d %H:%M:%S')"
-          git push origin gh-pages  # ✅ 确保 push 不会因为 "non-fast-forward" 失败
+          git commit -m "更新 IPTV 频道 $(date '+%Y-%m-%d %H:%M:%S')" || true
+          git push origin gh-pages --force  # 🔥 强制覆盖
