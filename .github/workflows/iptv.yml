@@ -40,3 +40,15 @@ jobs:
           git add tv_selected.m3u
           git commit -m "更新 IPTV 频道 $(date '+%Y-%m-%d %H:%M:%S')" || true
           git push origin gh-pages --force  # 🔥 强制覆盖
+
+      - name: 发送 Telegram 通知
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          MESSAGE="✅ IPTV 频道更新成功 🎉\n📅 日期: $(date '+%Y-%m-%d %H:%M:%S')\n🔗 [查看 M3U 文件](https://github.com/gdstchdr1/iptv-checker/blob/gh-pages/tv_selected.m3u)"
+          curl -s -X POST "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
+            -d chat_id="$TELEGRAM_CHAT_ID" \
+            -d parse_mode="Markdown" \
+            -d text="$MESSAGE"
+          
