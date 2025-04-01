@@ -16,7 +16,7 @@ echo "#EXTM3U" > "$SELECTED_M3U_FILE"
 
 while read -r line; do
     if echo "$line" | grep -q "^#EXTINF"; then
-        if echo "$line" | grep -E "翡翠台|凤凰资讯|台视|民视"; then
+        if echo "$line" | grep -E "翡翠台|凤凰资讯|J2"; then
             title="$line"
             read -r url  # 读取下一行（即 URL）
             echo "$title" >> "$SELECTED_M3U_FILE"
