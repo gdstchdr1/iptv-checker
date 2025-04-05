@@ -1,0 +1,41 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="6fddc5ad-63cb-44f1-b1e6-2816422dd9e4" tvg-name="翡翠台" group-title="IPTV-国际" latency-ms="44",翡翠台
+http://aktv-stream.m16tv.cfd/stream/aktv/null/AKTV.m3u8
+#EXTINF:-1 tvg-id="70a71e0e-cee2-48b2-b320-0b0e3334cbe6" tvg-name="翡翠台 4K" group-title="IPTV-国际" latency-ms="44",翡翠台 4K
+http://aktv-stream.m16tv.cfd/stream/aktv/4k/AKTV.m3u8
+#EXTINF:-1 tvg-id="60044df2-f808-4223-8503-4ed680bb52bc" tvg-name="黃金翡翠台" group-title="IPTV-国际" latency-ms="44",黃金翡翠台
+http://aktv-stream.m16tv.cfd/stream/aktv/null-21/AKTV.m3u8
+#EXTINF:-1 tvg-id="TVB翡翠台" tvg-name="翡翠台" group-title="IPTV-国际" latency-ms="45",TVB翡翠台
+http://php.jdshipin.com:8880/smt.php?id=jade_twn
+#EXTINF:-1 tvg-id="TVB翡翠台" tvg-name="翡翠台" group-title="IPTV-国际" latency-ms="45",TVB翡翠台 1080P
+http://php.jdshipin.com:8880/TVOD/iptv.php?id=fct3
+#EXTINF:-1 tvg-id="TVB翡翠台" tvg-name="翡翠台" group-title="IPTV-国际" latency-ms="45",TVB翡翠台 4K
+http://php.jdshipin.com:8880/TVOD/iptv.php?id=fct4
+#EXTINF:-1 tvg-id="TVB翡翠台" tvg-name="翡翠台" group-title="IPTV-国际" latency-ms="45",TVB翡翠台（备用）
+http://php.jdshipin.com:8880/TVOD/iptv.php?id=fct
+#EXTINF:-1 tvg-id="凤凰资讯" tvg-name="凤凰资讯" group-title="IPTV-国际" latency-ms="45",凤凰资讯
+http://php.jdshipin.com/TVOD/iptv.php?id=fhzx
+#EXTINF:-1 tvg-id="f7da61df-e777-4585-8f47-efc3ed63565c" tvg-name="翡翠台" group-title="IPTV-国际" latency-ms="45",翡翠台
+http://php.jdshipin.com:8880/TVOD/iptv.php?id=fct3&token=512df05ba47edb46400575c93e179adb7981226d414516400ed1d382cb126adc517715d4ccd3a2276bf3c7b72d52f58905225cf0b1cc461b7888443f
+#EXTINF:-1 tvg-id="9cbb3a35-aff4-4356-a57c-1e3181ef7217" tvg-name="凤凰资讯" group-title="IPTV-国际" latency-ms="45",凤凰资讯
+http://php.jdshipin.com:8880/smt.php?id=phoenixinfo_hd
+#EXTINF:-1 tvg-id="21f72d7e-12de-4610-87bb-6c8d42f730e2" tvg-name="J2" group-title="IPTV-国际" latency-ms="45",J2
+http://php.jdshipin.com:8880/PLTV/iptv.php?id=j2
+#EXTINF:-1 tvg-id="2744f6f3-71fa-44f6-935a-fd7ad9db7240" tvg-name="翡翠台" group-title="IPTV-国际" latency-ms="78",翡翠台
+https://cdn3.163189.xyz/live/fct/stream.m3u8
+#EXTINF:-1 tvg-id="4d0d9fcd-4286-4b1e-a5e6-d024b75e6dfe" tvg-name="凤凰资讯" group-title="IPTV-国际" latency-ms="78",凤凰资讯
+https://cdn3.163189.xyz/live/fhzx/stream.m3u8
+#EXTINF:-1 tvg-id="73309c5d-0b43-4cfe-91e3-2bcfc2c3235c" tvg-name="凤凰资讯" group-title="IPTV-国际" latency-ms="78",凤凰资讯
+http://cdn3.163189.xyz/live/fhzx/stream.m3u8
+#EXTINF:-1 tvg-id="bf73d650-a77c-4d9e-8af5-08207a126eef" tvg-name="翡翠台" group-title="IPTV-国际" latency-ms="109",翡翠台
+http://cdn9.163189.xyz/smt1.1.php?id=jade_twn
+#EXTINF:-1 tvg-id="e7001771-068b-40b6-b424-fbdb2bd3f448" tvg-name="翡翠台" group-title="IPTV-国际" latency-ms="200",翡翠台
+http://cdn5.1678520.xyz/live/?id=fct
+#EXTINF:-1 tvg-id="c8f65b5a-b5de-4ead-b24c-e49e2563061a" tvg-name="翡翠台" group-title="IPTV-国际" latency-ms="200",翡翠台
+https://cdn5.1678520.xyz/live/live2.1.php?id=j1
+#EXTINF:-1 tvg-id="c8ecbd05-6699-4ed2-9374-ddc244d932d2" tvg-name="凤凰资讯" group-title="IPTV-国际" latency-ms="200",凤凰资讯
+http://cdn5.1678520.xyz:80/live/live2.1.php?id=fhzx
+#EXTINF:-1 tvg-id="49b494a5-50fe-4a14-89d1-6f707ae4b7c9" tvg-name="翡翠台" group-title="IPTV-国际" latency-ms="384",翡翠台
+https://cdn.163189.xyz/live/fct4k/stream.m3u8
+#EXTINF:-1 tvg-id="52694dcd-e53a-4421-a316-1db361f50810" tvg-name="凤凰资讯" group-title="IPTV-国际" latency-ms="1349",凤凰资讯
+http://cdn3.132.us.kg/live/fhzx/stream.m3u8
