@@ -51,4 +51,21 @@ jobs:
             -d chat_id="$TELEGRAM_CHAT_ID" \
             -d parse_mode="Markdown" \
             -d text="$MESSAGE"
+            
+      - name: 删除旧的 Workflow Run（保留当前）
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          echo "🔄 获取旧的 workflow runs..."
+          runs=$(curl -s -H "Authorization: token $GH_PAT" \
+            "https://api.github.com/repos/$REPO/actions/runs?per_page=100" | jq '.workflow_runs[] | select(.id != '${RUN_ID}') | .id')
+
+          echo "🗑️ 删除旧的 workflow runs..."
+          for run_id in $runs; do
+            echo "➡ 删除 run: $run_id"
+            curl -s -X DELETE -H "Authorization: token $GH_PAT" \
+              "https://api.github.com/repos/$REPO/actions/runs/$run_id"
+          done
           
