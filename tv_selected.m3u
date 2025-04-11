@@ -1,0 +1,7 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="翡翠台" tvg-name="翡翠台" group-title="香港" latency-ms="37",翡翠台
+http://aktv-stream.m16tv.cfd/stream/aktv/null/AKTV.m3u8
+#EXTINF:-1 tvg-id="翡翠台4" tvg-name="翡翠台4" group-title="香港" latency-ms="37",翡翠台 4K
+http://aktv-stream.m16tv.cfd/stream/aktv/4k/AKTV.m3u8
+#EXTINF:-1 tvg-id="黃金翡翠台" tvg-name="黃金翡翠台" group-title="香港" latency-ms="37",黃金翡翠台
+http://aktv-stream.m16tv.cfd/stream/aktv/null-21/AKTV.m3u8
