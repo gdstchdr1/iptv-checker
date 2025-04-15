@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # IPTV 播放列表的下载地址
-M3U_URL="https://ehe.serv00.net/tv3.m3u"
+M3U_URL="http://205.185.123.236:50089/?type=m3u"
 M3U_FILE="tv.m3u"
 SELECTED_M3U_FILE="tv_selected.m3u"
 
