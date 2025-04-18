@@ -1,10 +1,14 @@
 #!/bin/bash
 
-# IPTV 播放列表的下载地址
-M3U_URL="http://205.185.123.236:50089/?type=m3u"
-M3U_URL="https://live.iptv365.org/live.txt"
-M3U_FILE="tv.m3u"
+# 多个 IPTV 播放列表地址
+M3U_URLS=(
+    "http://205.185.123.236:50089/?type=m3u"
+    "https://live.iptv365.org/live.txt"
+    # 在此添加更多地址
+)
+
 SELECTED_M3U_FILE="tv_selected.m3u"
+TEMP_M3U_FILE="temp.m3u"
 
 # 删除旧的 M3U 文件，防止 GitHub Actions 复制相同的文件
 rm -f "$SELECTED_M3U_FILE"
